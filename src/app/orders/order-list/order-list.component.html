@@ -1,0 +1,9 @@
+<h4 class="title">Orders</h4>
+<ul class="list-group" *ngFor="let order of orders;">
+    <li class="list-group-item">
+        Table {{order.table}}
+    </li>
+    <li class="list-group-item">
+        {{order.products}}
+    </li>
+</ul>
