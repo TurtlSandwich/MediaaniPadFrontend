@@ -1,0 +1,61 @@
+.main-content {
+  width: 100vw;
+  height: -webkit-fill-available;
+  position: fixed;
+  margin-left: 40vw;
+  text-align: center;
+
+  .menu-button-container {
+    width: fit-content;
+    padding: 1.5%;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    left: 2vw;
+    top: -10vw;
+    border-radius: 5px;
+    position: absolute;
+  }
+
+  .menu-button-container .fa::before {
+    font-size: 2em;
+  }
+
+  .menu-container {
+    width: 90%;
+    height: 93vh; /* this + footer height == 100vh*/
+    margin: auto;
+  }
+}
+
+.showing-menu-button {
+  animation-name: showing-menu-button;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+}
+
+.hiding-menu-button {
+  animation-name: hiding-menu-button;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes showing-menu-button {
+  from {
+    top: -10vw;
+  }
+  to {
+    top: 2vw;
+  }
+}
+
+@keyframes hiding-menu-button {
+  from {
+    top: 2vw;
+  }
+  to {
+    top: -10vw;
+  }
+}
