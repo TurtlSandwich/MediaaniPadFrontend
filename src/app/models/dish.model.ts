@@ -11,4 +11,8 @@ export class Dish {
     getName() { return this.name; }
     getPrice() { return this.price; }
     getPicture() { return this.picture; }
+
+    toString(){
+        return `${this.id}) ${this.name}`;
+    }
 }

@@ -1,13 +1,38 @@
-<!-- <div *ngFor="let item of items">{{item}}</div>
+<h1>Menu</h1>
 
-<pre>
-  {{postReturnValue}}
-</pre> -->
+<br>
 
-<div class="container">
-  <app-sidebar></app-sidebar>
-  <app-main [messageToReceiveFromParent]="messagetoSendToChild" ></app-main>
-</div>
+<ul>
+  <li *ngFor="let dish of menu.dishes">{{dish.toString()}}</li>
+</ul>
 
+<br>
+<hr>
+<br>
+
+<h4>Add dish</h4>
+<input type="number" #addDishId>
+<button (click)="addDish(addDishId.value)">Add dish</button>
+
+<br>
+<br>
+
+<h4>Remove dish</h4>
+<input type="number" #removeDishId>
+<button (click)="removeDish(removeDishId.value)">Remove dish</button>
+
+<br>
+<br>
+<hr>
+<br>
+
+<h2>Your order</h2>
+<button (click)="sendOrder()">Send order</button>
+
+<br>
+
+<ul>
+  <li *ngFor="let dish of order.dishes">{{dish.toString()}}</li>
+</ul>
 
 <router-outlet></router-outlet>

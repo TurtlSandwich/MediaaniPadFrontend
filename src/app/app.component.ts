@@ -1,5 +1,9 @@
+import { OrderService } from './service/order.service';
+import { MenuService } from './service/menu.service';
+import { Menu } from './models/menu.model';
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Order } from './models/order.model';
+import { Dish } from './models/dish.model';
 
 @Component({
   selector: 'app-root',
@@ -9,37 +13,24 @@ import { HttpClient } from '@angular/common/http';
 
 export class AppComponent {
   title = 'MediaanAngularIPad';
-  messagetoSendToChild = "Very long message messagemessagemessagemessage";
 
-  // Get variables
-  getUrl = 'http://echo.jsontest.com/key/value/one/two';
-  items = [];
+  order = new Order(this.orderService);
+  menu = new Menu(this.menuService);
 
-  // Post variables
-  postUrl = 'http://httpbin.org/post';
-  postData = {
-    testKey: "testValue"
+  constructor(
+    private menuService: MenuService,
+    private orderService: OrderService) {
   }
-  postReturnValue;
 
-  // constructor(private http: HttpClient) {
-    
-  //   // Get method
-  //   this.http.get(this.getUrl).toPromise().then(data => {
-  //     console.log(data);
+  addDish(id: number) {
+    this.order.addDish(this.menu.dishes.find(dish => dish.getId() == id));
+  }
 
-  //     for (let key in data) {
-  //       if (data.hasOwnProperty(key)) {
-  //         this.items.push(data[key]);
-  //       }
-  //     }
-  //   })
+  removeDish(id: number) {
+    this.order.removeDish(id);
+  }
 
-  //   // Post method
-  //   this.http.post(this.postUrl, this.postData).toPromise().then((data: any) => {
-  //     console.log(data);
-
-  //     this.postReturnValue = JSON.stringify(data.json);
-  //   })
-  // }
+  sendOrder(){
+    this.order.sendOrder();
+  }
 }
