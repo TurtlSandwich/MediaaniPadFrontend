@@ -1,24 +1,24 @@
-import { OrderService } from './../service/order.service';
 import { Dish } from './dish.model';
 
 export class Order {
 
-    dishes: Dish[] = [];
+    private orderItems: OrderItem[];
 
-    constructor(private service: OrderService) {
+    constructor() { this.orderItems = []; }
 
-    }
+    getDishes() { return this.orderItems; }
 
-    addDish(dish: Dish) {
-        this.dishes.push(dish);
-    }
+    addDish(dish: Dish) { this.orderItems.push(new OrderItem(this.orderItems.length, dish)); }
 
-    removeDish(id: Number) {
-        this.dishes = this.dishes.filter(dish => dish.getId() != id);
-    }
+    removeDish(id: number) { this.orderItems = this.orderItems.filter(orderItem => orderItem.getId() != id); }
+}
 
-    sendOrder(){
-        this.service.sendOrder(this.dishes);
-        this.dishes = [];   // Clearing the array after sending it.
-    }
+class OrderItem {
+    constructor(private id: number, private dish: Dish) { }
+
+    getId(): number { return this.id; }
+
+    getDish(): Dish { return this.dish; }
+
+    toString() { return `${this.id}) ${this.dish.getName()}` }
 }

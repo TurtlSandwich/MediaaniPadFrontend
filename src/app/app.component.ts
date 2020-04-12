@@ -1,6 +1,5 @@
 import { OrderService } from './service/order.service';
 import { MenuService } from './service/menu.service';
-import { Menu } from './models/menu.model';
 import { Component } from '@angular/core';
 import { Order } from './models/order.model';
 import { Dish } from './models/dish.model';
@@ -14,23 +13,31 @@ import { Dish } from './models/dish.model';
 export class AppComponent {
   title = 'MediaanAngularIPad';
 
-  order = new Order(this.orderService);
-  menu = new Menu(this.menuService);
+  menu: Dish[];
+  order: Order;
 
   constructor(
     private menuService: MenuService,
     private orderService: OrderService) {
+    this.menu = menuService.getMenu();
+    this.UpdateOrder();
   }
 
+
   addDish(id: number) {
-    this.order.addDish(this.menu.dishes.find(dish => dish.getId() == id));
+    this.orderService.addDish(id);
+    this.UpdateOrder();
   }
 
   removeDish(id: number) {
-    this.order.removeDish(id);
+    this.orderService.removeDish(id);
+    this.UpdateOrder();
   }
 
-  sendOrder(){
-    this.order.sendOrder();
+  sendOrder() {
+    this.orderService.sendOrder();
+    this.UpdateOrder();
   }
+
+  private UpdateOrder() { this.order = this.orderService.getOrder(); }
 }
