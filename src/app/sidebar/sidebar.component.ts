@@ -10,4 +10,10 @@ export class SidebarComponent implements OnInit {
     ngOnInit(): void {
         console.log('Sidebar component werkt');
     }
+
+    selectedMenu: string = "";
+
+    selectCategory(selectedValue: string) {
+        this.selectedMenu = selectedValue;
+    }
 }

@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class AppComponent {
   title = 'MediaanAngularIPad';
+  messagetoSendToChild = "Very long message messagemessagemessagemessage";
 
   // Get variables
   getUrl = 'http://echo.jsontest.com/key/value/one/two';
@@ -21,24 +22,24 @@ export class AppComponent {
   }
   postReturnValue;
 
-  constructor(private http: HttpClient) {
+  // constructor(private http: HttpClient) {
+    
+  //   // Get method
+  //   this.http.get(this.getUrl).toPromise().then(data => {
+  //     console.log(data);
 
-    // Get method
-    this.http.get(this.getUrl).toPromise().then(data => {
-      console.log(data);
+  //     for (let key in data) {
+  //       if (data.hasOwnProperty(key)) {
+  //         this.items.push(data[key]);
+  //       }
+  //     }
+  //   })
 
-      for (let key in data) {
-        if (data.hasOwnProperty(key)) {
-          this.items.push(data[key]);
-        }
-      }
-    })
+  //   // Post method
+  //   this.http.post(this.postUrl, this.postData).toPromise().then((data: any) => {
+  //     console.log(data);
 
-    // Post method
-    this.http.post(this.postUrl, this.postData).toPromise().then((data:any) => {
-      console.log(data);
-
-      this.postReturnValue = JSON.stringify(data.json);
-    })
-  }
+  //     this.postReturnValue = JSON.stringify(data.json);
+  //   })
+  // }
 }
