@@ -3,9 +3,9 @@
   {{json}}
 </div> -->
 
-<div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-  </div>
-</div> 
+<div *ngFor="let user of users$" style="text-align: center;">
+  <h2>{{ user.name }}</h2>
+  <h2>{{ user.email }}</h2>
+</div>
+<!-- <app-header></app-header> -->
+<router-outlet></router-outlet>
