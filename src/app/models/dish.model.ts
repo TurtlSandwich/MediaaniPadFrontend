@@ -1,10 +1,12 @@
 export class Dish {
 
+
     constructor(
         private id: number,
         private name: string,
         private price: number,
-        private picture: string) {
+        private picture: string
+    ) {
     }
 
     getId() { return this.id; }

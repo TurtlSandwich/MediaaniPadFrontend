@@ -9,5 +9,5 @@ export class Menu {
 
     setDishes(dishes: Dish[]) { this.dishes = dishes; }
 
-    getDishes() { return this.dishes; }
+    getDishes(): Dish[] { return this.dishes; }
 }

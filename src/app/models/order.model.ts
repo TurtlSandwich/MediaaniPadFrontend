@@ -3,14 +3,22 @@ import { Dish } from './dish.model';
 export class Order {
 
     private orderItems: OrderItem[];
+    private orderItemId: number = 0;
 
-    constructor() { this.orderItems = []; }
+    constructor() {
+        this.reset();
+    }
 
     getDishes() { return this.orderItems; }
 
-    addDish(dish: Dish) { this.orderItems.push(new OrderItem(this.orderItems.length, dish)); }
+    addDish(dish: Dish) { this.orderItems.push(new OrderItem(this.orderItemId++, dish)); }
 
     removeDish(id: number) { this.orderItems = this.orderItems.filter(orderItem => orderItem.getId() != id); }
+
+    reset() {
+        this.orderItems = [];
+        this.orderItemId = 0
+    }
 }
 
 class OrderItem {

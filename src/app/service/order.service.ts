@@ -29,8 +29,10 @@ export class OrderService {
   sendOrder() {
     // Http stuff here...
     // IT WORKS
-    // this.http.post(this.testPostUrl, this.order.getDishes()).toPromise().then((data: any) => {
-    //   console.log(data);
-    // });
+    this.http.post(this.testPostUrl, this.order.getDishes()).toPromise().then((data: any) => {
+      console.log(data);
+    });
+
+    this.order.reset();
   }
 }

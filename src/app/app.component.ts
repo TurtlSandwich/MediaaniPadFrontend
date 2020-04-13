@@ -19,10 +19,9 @@ export class AppComponent {
   constructor(
     private menuService: MenuService,
     private orderService: OrderService) {
-    this.menu = menuService.getMenu();
-    this.UpdateOrder();
+      this.order = new Order();
+      this.menu = menuService.getMenu();
   }
-
 
   addDish(id: number) {
     this.orderService.addDish(id);
