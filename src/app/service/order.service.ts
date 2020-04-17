@@ -27,9 +27,16 @@ export class OrderService {
   testPostUrl = "http://httpbin.org/post";
 
   sendOrder() {
-    // Http stuff here...
-    // IT WORKS
-    this.http.post(this.testPostUrl, this.order.getDishes()).toPromise().then((data: any) => {
+    // The list of order items. So an id and dish.
+    const orderList = JSON.stringify(this.order.getDishes());
+
+    // The list of the ordered dishes.
+    const orderedDishesList = this.order.getDishes().map(orderItem => orderItem.getDish());
+
+    console.log(orderList);
+    console.log(orderedDishesList);
+
+    this.http.post(this.testPostUrl, orderedDishesList).toPromise().then((data: any) => {
       console.log(data);
     });
 
