@@ -1,23 +1,15 @@
 import { Menu } from './../models/menu.model';
 import { Dish } from './../models/dish.model';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService {
+export class MenuService implements OnInit {
 
   private menu: Menu;
-
-  private mockMenu: Dish[] = [
-    new Dish(1, "Dish one", 12.3, ""),
-    new Dish(2, "Dish two", 12.3, ""),
-    new Dish(3, "Dish three", 12.3, ""),
-    new Dish(4, "Dish four", 12.3, ""),
-    new Dish(5, "Dish five", 12.3, "")
-  ]
 
   private menuToBe: Dish[] = [];
 
@@ -26,7 +18,10 @@ export class MenuService {
     this.setMenu();
   }
 
-  testGetUrl = "http://localhost:8080/menu";
+  ngOnInit() {
+  }
+
+  testGetUrl = "http://localhost:8087/menu";
 
   setMenu() {
     this.http.get<Dish[]>(this.testGetUrl).toPromise().then((data: any) => {

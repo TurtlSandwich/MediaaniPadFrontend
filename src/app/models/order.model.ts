@@ -8,7 +8,6 @@ export class Order {
 
     constructor() {
         this.clearOrder();
-        this.tableNumber = 8;       // Just a random table number.
     }
 
     getTableNumber() { return this.tableNumber; }
@@ -22,6 +21,7 @@ export class Order {
     clearOrder() {
         this.orderItems = [];
         this.orderItemId = 1
+        this.tableNumber = Math.round(Math.random() * 9) + 1;       // Just a random table number.
     }
 }
 

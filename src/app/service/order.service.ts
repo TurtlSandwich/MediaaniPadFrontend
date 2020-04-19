@@ -1,3 +1,4 @@
+import { WebSocketAPI } from './../WebSocketAPI';
 import { MenuService } from './menu.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -26,16 +27,24 @@ export class OrderService {
 
   testPostUrl = "http://httpbin.org/post";
 
-  sendOrder() {
-    let orderToSend = JSON.stringify( {
+  sendOrder(ws: WebSocketAPI) {
+    const orderToSave = JSON.stringify(this.order.getDishes().map(orderItem => orderItem.getDish().getId()));
+    let orderforKitchen = {
       tableNumber: this.order.getTableNumber(),
-      dishIds: this.order.getDishes().map(orderItem => orderItem.getDish().getId())     // Getting the dish ids from the order instead of the whole orderItem object.
-    })
+      dishes: this.order.getDishes().map(orderItem => orderItem.getDish())
+    }
+    
+    // this.saveOrder(orderToSave);
+    this.saveOrder(JSON.stringify(orderToSave));
+    this.sendOrderToKitchen(ws, orderforKitchen);
+    this.order.clearOrder();
+  }
 
+  private sendOrderToKitchen(ws: WebSocketAPI, orderforKitchen) { ws._send(orderforKitchen); }
+
+  private saveOrder(orderToSend) {
     this.http.post(this.testPostUrl, orderToSend).toPromise().then((data: any) => {
       console.log(data);
     });
-
-    this.order.clearOrder();
   }
 }
