@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { WebSocketAPI } from './websocket';
+import { Order } from './models/order';
 
 @Component({
   selector: "app-root",
@@ -8,46 +10,30 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
   title = "MediaanAngularKitchen";
+  webSocket: WebSocketAPI;
+  greeting: any;
+  order: Order;
+  name: string;
 
- 
   constructor() {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.webSocket = new WebSocketAPI(new AppComponent());
+  }
 
-  // ngOnInit() {
-  //   return this.userService
-  //     .getUsers()
-  //     .subscribe((data) => this.users$ = data);
-  // }
+  connect(){
+    this.webSocket._connect();
+  }
 
-  // geturl = "http://echo.jsontest.com/key/value/one/two";
-  // posturl = "http://httpbin.org/post";
-  // items = [];
-  // json;
-  // postdata = {
-  //   voeding: "kaas",
-  // };
+  disconnect(){
+    this.webSocket._disconnect(); 
+  }
 
-  // constructor(private http: HttpClient) {
-  //   // This is the GET call from a test url
-  //   this.http
-  //     .get(this.geturl)
-  //     .toPromise()
-  //     .then((data) => {
-  //       console.log(data);
+  handleOrder(order){
+    this.order = order;
+  }
 
-  //       for (let key in data)
-  //         if (data.hasOwnProperty(key)) this.items.push(data[key]);
-  //     });
+  handleMessage(message){
+    this.greeting = message;
+  }
 
-  //   // This is the POST call from a test url
-  //   this.http
-  //     .post(this.posturl, this.postdata)
-  //     .toPromise()
-  //     .then((data: any) => {
-  //       console.log(data);
-  //       console.log(data.json.voeding);
-  //       // JSON.stringyfy makes the JSON data readable
-  //       this.json = JSON.stringify(data.json);
-  //     });
-  // }
 }

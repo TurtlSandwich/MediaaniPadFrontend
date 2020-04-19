@@ -1,6 +1,5 @@
-import { Meal } from './meal';
+import { Meal } from "./meal";
 
-export class Order{
-    tableNumber: number;
-    mealList: Meal[];
+export class Order {
+  constructor(public id: string, public tableNumber: number, public mealList: Meal[]) {}
 }

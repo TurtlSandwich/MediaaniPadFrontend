@@ -1,5 +1,7 @@
-export class Meal{
-    price: number;
-    name: string;
-    description: string;
+export class Meal {
+  constructor(
+    public name: string,
+    public description: string,
+    public price: number
+  ) {}
 }

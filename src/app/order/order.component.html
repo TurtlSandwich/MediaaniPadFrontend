@@ -1,1 +1,10 @@
-<p>order works!</p>
+<p>Orders</p>
+
+<div class="" *ngFor="let order of mockOrders$">
+  <h1>{{ order.tableNumber }}</h1>
+  <div class="" *ngFor="let meal of order.mealList">
+    <h2>{{ meal.name }}</h2>
+    <h2>{{ meal.description }}</h2>
+    <h2>{{ meal.price }}</h2>
+  </div>
+</div>
