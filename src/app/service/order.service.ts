@@ -27,19 +27,15 @@ export class OrderService {
   testPostUrl = "http://httpbin.org/post";
 
   sendOrder() {
-    // The list of order items. So an id and dish.
-    const orderList = JSON.stringify(this.order.getDishes());
+    let orderToSend = JSON.stringify( {
+      tableNumber: this.order.getTableNumber(),
+      dishIds: this.order.getDishes().map(orderItem => orderItem.getDish().getId())     // Getting the dish ids from the order instead of the whole orderItem object.
+    })
 
-    // The list of the ordered dishes.
-    const orderedDishesList = this.order.getDishes().map(orderItem => orderItem.getDish());
-
-    console.log(orderList);
-    console.log(orderedDishesList);
-
-    this.http.post(this.testPostUrl, orderedDishesList).toPromise().then((data: any) => {
+    this.http.post(this.testPostUrl, orderToSend).toPromise().then((data: any) => {
       console.log(data);
     });
 
-    this.order.reset();
+    this.order.clearOrder();
   }
 }

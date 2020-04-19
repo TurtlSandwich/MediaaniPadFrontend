@@ -1,41 +1,46 @@
-<h1>Menu</h1>
+<div style="margin: 20px; padding: 20px; width: 300px; border: 1px solid black;">
+  <h1>Menu</h1>
 
-<!-- <button (click)="loadMenu()">Please</button> -->
+  <br>
 
-<br>
+  <ul>
+    <li *ngFor="let dish of menu">{{dish.toString()}}</li>
+  </ul>
 
-<ul>
-  <!-- <li *ngFor="let dish of menu">{{dish.toString()}}</li> -->
-  <li *ngFor="let dish of menu">{{dish.toString()}}</li>
-</ul>
+  <br>
 
-<br>
-<hr>
-<br>
+  <hr>
 
-<h4>Add dish</h4>
-<input type="number" #addDishId>
-<button (click)="addDish(addDishId.value)">Add dish</button>
+  <br>
 
-<br>
-<br>
+  <h4>Add dish</h4>
+  <input type="number" #addDishId style="width: 121px;">
+  <button (click)="addDish(addDishId.value)" style="margin-left: 50px; width: 82px;">Add dish</button>
 
-<h4>Remove dish</h4>
-<input type="number" #removeDishId>
-<button (click)="removeDish(removeDishId.value)">Remove dish</button>
+  <br>
+  <br>
 
-<br>
-<br>
-<hr>
-<br>
+  <h4>Remove dish</h4>
+  <input type="number" #removeDishId style="width: 121px;">
+  <button (click)="removeDish(removeDishId.value)" style="margin-left: 50px; width: 82px;">Remove dish</button>
 
-<h2>Your order</h2>
-<button (click)="sendOrder()">Send order</button>
+  <br>
+  <br>
 
-<br>
+  <hr>
 
-<ul>
-  <li *ngFor="let orderItem of order.getDishes()">{{orderItem.toString()}}</li>
-</ul>
+  <br>
 
-<router-outlet></router-outlet>
+  <div style="display: flex;">
+    <h2>Your order</h2>
+    <button (click)="sendOrder()" style="margin: auto auto auto 50px; width: 82px;">Send order</button>
+  </div>
+
+  <br>
+
+  <ul>
+    <li *ngFor="let orderItem of order.getDishes()">{{orderItem.toString()}}</li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>

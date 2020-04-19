@@ -2,12 +2,16 @@ import { Dish } from './dish.model';
 
 export class Order {
 
+    private tableNumber: number;
     private orderItems: OrderItem[];
     private orderItemId: number = 0;
 
     constructor() {
-        this.reset();
+        this.clearOrder();
+        this.tableNumber = 8;       // Just a random table number.
     }
+
+    getTableNumber() { return this.tableNumber; }
 
     getDishes() { return this.orderItems; }
 
@@ -15,9 +19,9 @@ export class Order {
 
     removeDish(id: number) { this.orderItems = this.orderItems.filter(orderItem => orderItem.getId() != id); }
 
-    reset() {
+    clearOrder() {
         this.orderItems = [];
-        this.orderItemId = 0
+        this.orderItemId = 1
     }
 }
 
