@@ -1,0 +1,81 @@
+$primary: #fff;
+$secondary: #000;
+
+.order-container {
+  margin: 1.3em 1.3em;
+  h2 {
+    font-weight: bold;
+  }
+  .order {
+    border: 1px solid black;
+    box-shadow: -7px -17px 61px 0px rgba(0, 0, 0, 0.22);
+    .order-info {
+      &::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .col-left {
+        float: left;
+        width: 80%;
+        padding: 0 1.3em 0 1.3em;
+      }
+
+      .order-title {
+        font-weight: bold;
+        border-right: 1px solid black;
+        .order-duration {
+          font-weight: normal;
+          float: right;
+          font-size: 20px;
+        }
+      }
+
+      .col-right {
+        float: left;
+        width: 20%;
+      }
+
+      .ready-btn {
+        background-color: #f44336;
+        color: white;
+        padding: 0.38em;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+          background-color: red;
+        }
+      }
+    }
+
+    .orders-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      .checked {
+        text-decoration: line-through;
+        color: white !important;
+        background-color: #575353 !important;
+      }
+
+      .product {
+        cursor: pointer;
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        background-color: $primary;
+        font-size: 18px;
+        transition: 0.2s;
+
+        &:hover {
+          background: darken($primary, 15);
+        }
+
+        .product-amount {
+          float: right;
+        }
+      }
+    }
+  }
+}

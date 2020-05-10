@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor() {}
   ngOnInit() {
     this.webSocket = new WebSocketAPI(new AppComponent());
+    this.connect();
   }
 
   connect(){

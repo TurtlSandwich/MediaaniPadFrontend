@@ -1,4 +1,4 @@
-<p>Orders</p>
+<!-- <p>Orders</p>
 
 <div class="" *ngFor="let order of mockOrders$">
   <h1>{{ order.tableNumber }}</h1>
@@ -7,4 +7,102 @@
     <h2>{{ meal.description }}</h2>
     <h2>{{ meal.price }}</h2>
   </div>
+</div> -->
+
+<div class="order-container">
+  <h2>Orders</h2>
+  <div class="order" id="orderId">
+    <div class="order-info">
+      <div class="order-title col-left">
+        <h4>
+          Table 4
+          <span class="order-duration">8 minutes ago</span>
+        </h4>
+      </div>
+      <a onclick="deleteOrder(orderId)" class="ready-btn col-right">Ready</a>
+    </div>
+    <ul class="orders-list">
+      <li class="product checked">
+        Plakje kaas <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+    </ul>
+  </div>
 </div>
+<div class="order-container">
+  <div class="order" id="orderId">
+    <div class="order-info">
+      <div class="order-title col-left">
+        <h4>
+          Table 4
+          <span class="order-duration">8 minutes ago</span>
+        </h4>
+      </div>
+      <a onclick="deleteOrder(orderId)" class="ready-btn col-right">Ready</a>
+    </div>
+    <ul class="orders-list">
+      <li class="product checked">
+        Plakje kaas <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="order-container">
+  <div class="order" id="orderId">
+    <div class="order-info">
+      <div class="order-title col-left">
+        <h4>
+          Table 4
+          <span class="order-duration">8 minutes ago</span>
+        </h4>
+      </div>
+      <a onclick="deleteOrder(orderId)" class="ready-btn col-right">Ready</a>
+    </div>
+    <ul class="orders-list">
+      <li class="product checked">
+        Plakje kaas <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+      <li class="product">
+        Coca Cola (Zero) <span class="product-amount">3</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  var list = document.querySelector("ul");
+  var orders = document.querySelector("order");
+
+  list.addEventListener(
+    "click",
+    function (ev) {
+      if (ev.target.tagName === "li") {
+        ev.target.classList.toggle("checked");
+      }
+    },
+    false
+  );
+</script>

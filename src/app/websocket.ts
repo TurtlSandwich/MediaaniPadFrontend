@@ -45,4 +45,6 @@ export class WebSocketAPI {
     console.log("Order received from server: " + order);
     this.appComponent.handleOrder(JSON.stringify(order.body));
   }
+
+ 
 }
