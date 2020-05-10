@@ -2,20 +2,18 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Order } from "../models/order";
 import { Meal } from "../models/meal";
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
 })
 export class OrderService {
-  kaas = new Meal("Kaas", "Echt heel jong belegen, minderjarig zelfs", 2.5);
-  boter = new Meal("Boter", "Heerlijk glad joh", 1.95);
-
-  mockMealList: Meal[] = [this.kaas, this.boter];
-  mockOrder = new Order('DKS-RR-EKS', 1, this.mockMealList);
-  mockOrders: Order[] = [this.mockOrder];
 
   getOrdersUrl = "";
   deleteOrderUrl = "";
+
+  private somethingSource = new Subject<any>();
+  somethingMessage$ = this.somethingSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -23,11 +21,11 @@ export class OrderService {
     return this.http.get<Order[]>(this.getOrdersUrl);
   }
 
-  deleteOrder(order: Order) {
-    return this.http.delete(this.deleteOrderUrl + "/" + order.id);
-  }
+  // deleteOrder(order: Order) {
+  //   return this.http.delete(this.deleteOrderUrl + "/" + order.id);
+  // }
 
-  getMockOrders() {
-    return this.mockOrders;
+  something(order){
+    this.somethingSource.next(order);
   }
 }

@@ -1,14 +1,15 @@
+import { OrderService } from './services/order.service';
 import { AppComponent } from "./app.component";
 import * as Stomp from "stompjs";
 import * as SockJS from "sockjs-client";
 
 export class WebSocketAPI {
   webSocketEndPoint: string = "http://localhost:8080/mediaan-ws";
-  topic: string = "/topic/orders";
+  topic: string = "/kitchen";
   stompClient: any;
   appComponent: AppComponent;
 
-  constructor(appComponent: AppComponent) {
+  constructor(appComponent: AppComponent, private orderService: OrderService) {
     this.appComponent = appComponent;
   }
 
@@ -43,8 +44,8 @@ export class WebSocketAPI {
 
   onOrderReceived(order) {
     console.log("Order received from server: " + order);
-    this.appComponent.handleOrder(JSON.stringify(order.body));
-  }
+    this.orderService.something(order.body);
 
- 
+    // this.appComponent.handleOrder(JSON.stringify(order.body));
+  }
 }

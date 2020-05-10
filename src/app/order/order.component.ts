@@ -1,3 +1,4 @@
+import { Meal } from './../models/meal';
 import { Component, OnInit } from "@angular/core";
 import { Order } from "../models/order";
 import { OrderService } from "../services/order.service";
@@ -10,18 +11,19 @@ import { OrderService } from "../services/order.service";
 export class OrderComponent implements OnInit {
   title: "Orders";
   mockOrders$: Order[];
-  orders$: Order[];
+  orders: Order[];
 
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService) {
+    this.orders = [];
+  }
 
-  ngOnInit() {
-    // return this.orderService
-    //   .getOrders()
-    //   .subscribe((data) => (this.orders$ = data));
+  ngOnInit() {    
+    this.orderService.somethingMessage$.subscribe((data: any) => this.updateOrders(data));
+  }
 
-    console.log(this.mockOrders$)
-    console.log(this.orderService.getMockOrders())
-    return this.orderService.getMockOrders();
-    
+  updateOrders(order){
+    order = JSON.parse(order);
+    console.log(order);
+    this.orders.push(new Order(order.tableNumber, order.meals.map(dish => new Meal(dish.name, dish.amount))));
   }
 }

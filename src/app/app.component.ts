@@ -1,3 +1,4 @@
+import { OrderService } from './services/order.service';
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { WebSocketAPI } from './websocket';
@@ -15,9 +16,10 @@ export class AppComponent implements OnInit {
   order: Order;
   name: string;
 
-  constructor() {}
+  constructor(private orderService: OrderService) {}
+
   ngOnInit() {
-    this.webSocket = new WebSocketAPI(new AppComponent());
+    this.webSocket = new WebSocketAPI(new AppComponent(this.orderService), this.orderService);
     this.connect();
   }
 
