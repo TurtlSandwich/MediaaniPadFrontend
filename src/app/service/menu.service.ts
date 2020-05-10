@@ -21,7 +21,8 @@ export class MenuService implements OnInit {
   ngOnInit() {
   }
 
-  testGetUrl = "http://localhost:8087/menu";
+  // testGetUrl = "http://localhost:8087/menu";
+  testGetUrl = "http://localhost:4200/assets/mockMenu.json";
 
   setMenu() {
     this.http.get<Dish[]>(this.testGetUrl).toPromise().then((data: any) => {
