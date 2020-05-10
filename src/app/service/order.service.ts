@@ -31,9 +31,15 @@ export class OrderService {
     const orderToSave = JSON.stringify(this.order.getDishes().map(orderItem => orderItem.getDish().getId()));
     let orderforKitchen = {
       tableNumber: this.order.getTableNumber(),
-      dishes: this.order.getDishes().map(orderItem => orderItem.getDish())
+      meals: this.order.getDishes().map(order => {
+        const please = {
+          name: order.getDish().getName(),
+          amount: order.getAmount()
+        };
+        return please;
+      })
     }
-    
+
     // this.saveOrder(orderToSave);
     this.saveOrder(JSON.stringify(orderToSave));
     this.sendOrderToKitchen(ws, orderforKitchen);
@@ -47,4 +53,8 @@ export class OrderService {
       console.log(data);
     });
   }
+}
+
+class Please {
+  constructor(name, amount) { }
 }

@@ -14,7 +14,13 @@ export class Order {
 
     getDishes() { return this.orderItems; }
 
-    addDish(dish: Dish) { this.orderItems.push(new OrderItem(this.orderItemId++, dish)); }
+    addDish(dish: Dish) {
+        if (this.orderItems.findIndex(oi => oi.getDish().getId() == dish.getId()) >= 0) {
+            this.orderItems.find(oi => oi.getDish().getId() == dish.getId()).add();
+        } else {
+            this.orderItems.push(new OrderItem(this.orderItemId++, dish, 1));
+        }
+    }
 
     removeDish(id: number) { this.orderItems = this.orderItems.filter(orderItem => orderItem.getId() != id); }
 
@@ -26,11 +32,15 @@ export class Order {
 }
 
 class OrderItem {
-    constructor(private id: number, private dish: Dish) { }
+    constructor(private id: number, private dish: Dish, private amount: number) { }
 
     getId(): number { return this.id; }
 
     getDish(): Dish { return this.dish; }
 
-    toString() { return `${this.id}) ${this.dish.getName()}` }
+    getAmount(): number { return this.amount; }
+
+    add(): void { this.amount++; }
+
+    toString() { return `${this.id}) ${this.dish.getName()} | ${this.getAmount()}` }
 }
