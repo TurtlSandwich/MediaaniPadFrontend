@@ -12,7 +12,7 @@ export class OrderComponent implements OnInit {
   title: "Orders";
   mockOrders$: Order[];
   orders: Order[];
-
+  
   constructor(private orderService: OrderService) {
     this.orders = [];
   }
@@ -25,5 +25,10 @@ export class OrderComponent implements OnInit {
     order = JSON.parse(order);
     console.log(order);
     this.orders.push(new Order(order.tableNumber, order.meals.map(dish => new Meal(dish.name, dish.amount))));
+  }
+  state: boolean = false;
+
+  toggle(){
+    this.state = !this.state;
   }
 }
