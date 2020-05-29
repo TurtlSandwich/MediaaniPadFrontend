@@ -1,3 +1,5 @@
+import { Category } from './../models/category.model';
+import { MenuService } from './../service/menu.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuCategoriesComponent implements OnInit {
 
-  constructor() { }
+  public categories: Category[];
+
+  constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
+    this.menuService.getCategories()
+      .subscribe(response =>
+        this.categories = response.map(c =>
+          new Category(c.id, c.name)));
   }
 
 }

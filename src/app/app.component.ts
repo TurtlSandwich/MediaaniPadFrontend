@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.webSocketAPI = new WebSocketAPI(new AppComponent(this.menuService, this.orderService));
-    this.webSocketAPI._connect();
+    // this.webSocketAPI._connect();
 
     this.order = new Order();
     this.menu = this.menuService.getMenu();

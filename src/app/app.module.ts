@@ -3,21 +3,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { MenuCategoriesComponent } from './menu-categories/menu-categories.component';
-import { MenuCategoryComponent } from './menu-categories/menu-category/menu-category.component'
+import { CategoryComponent } from './menu-categories/category/category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuCategoriesComponent,
-    MenuCategoryComponent
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,13 @@
 import { WebSocketAPI } from './../WebSocketAPI';
 import { MenuService } from './menu.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order } from '../models/order.model';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class OrderService {
 
   private order: Order;
@@ -25,12 +26,14 @@ export class OrderService {
 
   removeDish(id: number) { this.order.removeDish(id); }
 
-  testPostUrl = "http://httpbin.org/post";
+  testPostUrl = "http://localhost:8080/ipad/addorder";
+
 
   sendOrder(ws: WebSocketAPI) {
-    const orderToSave = JSON.stringify(this.order.getDishes().map(orderItem => orderItem.getDish().getId()));
+    // const orderToSave = JSON.stringify(this.order.getDishes().map(orderItem => orderItem.getDish().getId()));
     let orderforKitchen = {
       tableNumber: this.order.getTableNumber(),
+      orderTime: new Date().toLocaleTimeString("nl"),
       meals: this.order.getDishes().map(order => {
         const please = {
           name: order.getDish().getName(),
@@ -39,22 +42,20 @@ export class OrderService {
         return please;
       })
     }
-
-    // this.saveOrder(orderToSave);
-    this.saveOrder(JSON.stringify(orderToSave));
-    this.sendOrderToKitchen(ws, orderforKitchen);
+    let orderToSave = {
+      sessions: 1,
+      order_time: new Date().toLocaleTimeString("nl"),
+      meals: this.order.getDishes().map(d => { return { id: d.getDish().getId() }; })
+    }
+    console.log(orderforKitchen);
+    // this.saveOrder(JSON.stringify(orderToSave));
+    // this.sendOrderToKitchen(ws, orderforKitchen);
     this.order.clearOrder();
   }
 
   private sendOrderToKitchen(ws: WebSocketAPI, orderforKitchen) { ws._send(orderforKitchen); }
 
-  private saveOrder(orderToSend) {
-    this.http.post(this.testPostUrl, orderToSend).toPromise().then((data: any) => {
-      console.log(data);
-    });
+  private saveOrder(orderToSave) {
+    this.http.post(this.testPostUrl, orderToSave);
   }
-}
-
-class Please {
-  constructor(name, amount) { }
 }

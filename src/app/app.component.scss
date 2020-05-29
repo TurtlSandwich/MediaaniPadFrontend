@@ -1,4 +1,18 @@
 .container {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
+
+  .header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: grey;
+    padding: 1%;
+
+    img {
+      margin: auto;
+      display: block;
+    }
   }
+}

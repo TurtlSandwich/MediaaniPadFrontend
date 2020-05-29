@@ -42,5 +42,5 @@ class OrderItem {
 
     add(): void { this.amount++; }
 
-    toString() { return `${this.id}) ${this.dish.getName()} | ${this.getAmount()}` }
+    toString() { return `${this.id}) ${this.dish.getName()} | ${this.getAmount()}x` }
 }
