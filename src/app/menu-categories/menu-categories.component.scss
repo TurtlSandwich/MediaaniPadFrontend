@@ -1,0 +1,11 @@
+.container {
+  margin: 1%;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+
+    // minmax(x, y). x = gap between rows. x min = 33%.
+    grid-auto-rows: minmax(40%, auto);
+  }
+}

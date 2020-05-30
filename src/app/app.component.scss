@@ -1,18 +1,16 @@
 .container {
-  display: flex;
-  position: relative;
-
   .header {
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
-    background-color: grey;
+    background-color: #cacaca;
     padding: 1%;
 
     img {
       margin: auto;
       display: block;
     }
+  }
+
+  .content-container{
+    margin-top: 8%;
   }
 }

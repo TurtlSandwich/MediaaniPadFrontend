@@ -39,4 +39,8 @@ export class MenuService {
   getCategories(): Observable<any>{
     return this.http.get(this.mockCategoryUrl);
   }
+
+  getItems(categoryId: number): Observable<any>{
+    return this.http.get(this.mockMenuUrl);
+  }
 }

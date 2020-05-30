@@ -9,15 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuCategoriesComponent implements OnInit {
 
-  public categories: Category[];
+  public categories: Category[] = [];
+  public menuItems: [];
+
+  private selectedCategoryId: number;
 
   constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
-    this.menuService.getCategories()
-      .subscribe(response =>
-        this.categories = response.map(c =>
-          new Category(c.id, c.name)));
+    this.loadCategories();
   }
 
+  loadCategories() {
+    this.menuService.getCategories()
+      .subscribe(response => this.categories = response.map(c =>
+        new Category(c.id, c.name))
+      );
+  }
+
+  onSelect(categoryId: number){
+    this.selectedCategoryId = categoryId;
+    this.menuService.getItems(categoryId).subscribe(response => {
+
+    })
+  }
 }
