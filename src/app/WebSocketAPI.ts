@@ -6,11 +6,6 @@ export class WebSocketAPI {
     webSocketEndPoint: string = 'http://localhost:8080/mediaan-ws';
     topic: string = "/kitchen";
     stompClient: any;
-    appComponent: AppComponent;
-
-    constructor(appComponent: AppComponent) {
-        this.appComponent = appComponent;
-    }
 
     _connect() {
         console.log("Initialize WebSocket Connection");
@@ -38,18 +33,8 @@ export class WebSocketAPI {
         }, 5000);
     }
 
-    /**
-     * Send message to sever via web socket
-     * @param {*} message 
-     */
     _send(message) {
         console.log("calling logout api via web socket");
         this.stompClient.send("/kitchen", {}, JSON.stringify(message));
     }
-
-    // The ipad app has never a need to receive anything.
-    // onMessageReceived(message) {
-    //     console.log("Message Recieved from Server :: " + message);
-    //     this.appComponent.handleMessage(JSON.stringify(message.body));
-    // }
 }

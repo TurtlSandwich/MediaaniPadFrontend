@@ -1,10 +1,10 @@
-<!-- <div style="margin: 20px; padding: 20px; width: 300px; border: 1px solid black;">
+<div style="margin: 20px; padding: 20px; width: 300px; border: 1px solid black;">
   <h1>Menu</h1>
 
   <br>
 
   <ul>
-    <li *ngFor="let dish of menu">{{dish.toString()}}</li>
+    <li *ngFor="let menuItem of menuItems">{{menuItem.id + " " + menuItem.name}}</li>
   </ul>
 
   <br>
@@ -17,7 +17,8 @@
   <input type="number" #addDishId style="width: 121px;">
   <button (click)="addDish(addDishId.value)" style="margin-left: 50px; width: 82px;">Add dish</button>
 
-  <button (click)="addRandomDishes()" style="margin-left: 171px; width: 82px; margin-top:3px;">Add random dishes</button>
+  <button (click)="addRandomDishes()" style="margin-left: 171px; width: 82px; margin-top:3px;">Add random
+    dishes</button>
   <br>
   <br>
 
@@ -40,13 +41,14 @@
   <br>
 
   <ul>
-    <li *ngFor="let orderItem of order.getDishes()">{{orderItem.toString()}}</li>
+    <!-- <li *ngFor="let orderItem of order.getDishes()">{{orderItem.toString()}}</li> -->
+    <li *ngFor="let oi of order.orderItems">{{ oi.toString() }}</li>
   </ul>
 
   <router-outlet></router-outlet>
-</div> -->
+</div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="header">
     <img src="assets/mediaan.png" alt="MEDIAAN">
   </div>
@@ -55,4 +57,4 @@
   </div>
 
   <router-outlet></router-outlet>
-</div>
+</div> -->

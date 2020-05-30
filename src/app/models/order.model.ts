@@ -1,46 +1,57 @@
-import { Dish } from './dish.model';
+import { MenuItem } from './menu-item.model';
+// import { Dish } from './dish.model';
 
 export class Order {
 
-    private tableNumber: number;
-    private orderItems: OrderItem[];
-    private orderItemId: number = 0;
+    tableNumber: number;
+    orderItems: OrderItem[];
+    orderItemId: number;
 
     constructor() {
-        this.clearOrder();
+        this.reset();
     }
 
-    getTableNumber() { return this.tableNumber; }
-
-    getDishes() { return this.orderItems; }
-
-    addDish(dish: Dish) {
-        if (this.orderItems.findIndex(oi => oi.getDish().getId() == dish.getId()) >= 0) {
-            this.orderItems.find(oi => oi.getDish().getId() == dish.getId()).add();
-        } else {
-            this.orderItems.push(new OrderItem(this.orderItemId++, dish, 1));
-        }
+    addMenuItem(menuItem: MenuItem) {
+        const existingMenuItem = this.orderItems.find(oi => oi.menuItem.id == menuItem.id);
+        existingMenuItem == undefined ?
+            this.orderItems.push(new OrderItem(this.orderItemId++, menuItem)) :
+            existingMenuItem.amount++;
     }
 
-    removeDish(id: number) { this.orderItems = this.orderItems.filter(orderItem => orderItem.getId() != id); }
+    removeMenuItem(id: number) {
+        const index = this.orderItems.findIndex(oi => oi.id == id);
+        const orderItemToRemove = this.orderItems[index];
+        orderItemToRemove.amount > 1 ?
+            orderItemToRemove.amount-- :
+            this.orderItems.splice(index, 1);
+    }
 
-    clearOrder() {
+    reset() {
         this.orderItems = [];
-        this.orderItemId = 1
+        this.orderItemId = 1;
         this.tableNumber = Math.round(Math.random() * 9) + 1;       // Just a random table number.
+    }
+
+    mapOrderForKitchen(){
+        return {
+            tableNumber: this.tableNumber,
+            orderTime: new Date().toLocaleTimeString("nl"),
+            orderedItems: this.orderItems.map(oi => {return {id: oi.menuItem.id, amount: oi.amount}})
+        }
     }
 }
 
 class OrderItem {
-    constructor(private id: number, private dish: Dish, private amount: number) { }
+    id: number;
+    menuItem: MenuItem;
+    amount: number;
 
-    getId(): number { return this.id; }
+    constructor(id: number, menuItem: MenuItem) {
+        this.id = id;
+        this.menuItem = menuItem;
+        this.amount = 1;
+    }
 
-    getDish(): Dish { return this.dish; }
-
-    getAmount(): number { return this.amount; }
-
-    add(): void { this.amount++; }
-
-    toString() { return `${this.id}) ${this.dish.getName()} | ${this.getAmount()}x` }
+    // For demo
+    toString() { return `${this.id}) ${this.menuItem.name} | ${this.amount}x` }
 }
