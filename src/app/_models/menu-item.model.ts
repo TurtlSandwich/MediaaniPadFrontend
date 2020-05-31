@@ -3,13 +3,13 @@ export class MenuItem {
     categoryId: number;
     name: string;
     price: number;
-    picture: string;
+    image: string;
 
     constructor(menuItem) {
         this.id = menuItem.id;
         this.categoryId = menuItem.categoryId;
         this.name = menuItem.name;
         this.price = menuItem.price;
-        this.picture = menuItem.picture;
+        this.image = menuItem.image;
     }
 }

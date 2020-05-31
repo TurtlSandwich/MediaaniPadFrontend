@@ -6,6 +6,7 @@
 
     img {
       width: 75%;
+      padding-top: 10%;
       margin: auto;
       display: block;
     }
@@ -19,5 +20,9 @@
       // This is to ignore angular material stuff.
       margin: 0;
     }
+  }
+
+  .card:active{
+    background-color: #888888;
   }
 }

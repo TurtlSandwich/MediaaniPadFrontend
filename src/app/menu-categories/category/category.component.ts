@@ -1,4 +1,4 @@
-import { Category } from './../../models/category.model';
+import { Category } from '../../_models/category.model';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({

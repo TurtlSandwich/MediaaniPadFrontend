@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MenuItemService {
 
-  private mockMenuUrl = "http://localhost:4200/assets/mockMenu.json";
+  private mockMenuUrl = "assets/mock-data/mock-menu-items.json";
 
   constructor(private http: HttpClient) { }
 

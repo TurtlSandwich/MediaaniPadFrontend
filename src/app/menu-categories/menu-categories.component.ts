@@ -1,8 +1,10 @@
-import { MenuItemService } from './../service/menu-item.service';
-import { Category } from './../models/category.model';
+import { MenuItem } from '../_models/menu-item.model';
+import { MenuItemService } from '../_service/menu-item.service';
+import { Category } from '../_models/category.model';
 // import { MenuService } from './../service/menu.service';
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../service/category.service';
+import { CategoryService } from '../_service/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-categories',
@@ -11,12 +13,9 @@ import { CategoryService } from '../service/category.service';
 })
 export class MenuCategoriesComponent implements OnInit {
 
-  public categories: Category[] = [];
-  public menuItems: [];
+  public categories: Category[];
 
-  private selectedCategoryId: number;
-
-  constructor(private categoryService: CategoryService, private menuItemsService: MenuItemService) { }
+  constructor(private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCategories();
@@ -30,9 +29,7 @@ export class MenuCategoriesComponent implements OnInit {
   }
 
   onSelect(categoryId: number) {
-    this.selectedCategoryId = categoryId;
-    this.menuItemsService.getMenuItemsByCategoryId(categoryId).subscribe(response => {
-      // ...
-    })
+    this.categoryService.selectedCategoryId = categoryId;
+    this.router.navigate(["menu"]);
   }
 }

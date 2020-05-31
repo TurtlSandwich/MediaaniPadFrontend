@@ -1,4 +1,4 @@
-<div style="margin: 20px; padding: 20px; width: 300px; border: 1px solid black;">
+<!-- <div style="margin: 20px; padding: 20px; width: 300px; border: 1px solid black;">
   <h1>Menu</h1>
 
   <br>
@@ -41,20 +41,23 @@
   <br>
 
   <ul>
-    <!-- <li *ngFor="let orderItem of order.getDishes()">{{orderItem.toString()}}</li> -->
     <li *ngFor="let oi of order.orderItems">{{ oi.toString() }}</li>
   </ul>
 
   <router-outlet></router-outlet>
-</div>
+</div> -->
 
-<!-- <div class="container">
+<div class="container">
   <div class="header">
+    <div class="return-btn-container">
+      <button (click)="goToCategories()">Back</button>
+    </div>
     <img src="assets/mediaan.png" alt="MEDIAAN">
+    <div class="order-btn-container">
+      <button>Order</button>
+    </div>
   </div>
   <div class="content-container">
-    <app-menu-categories></app-menu-categories>
+    <router-outlet></router-outlet>
   </div>
-
-  <router-outlet></router-outlet>
-</div> -->
+</div>

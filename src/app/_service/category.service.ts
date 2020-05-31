@@ -6,8 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
+  
+  public selectedCategoryId: number;
 
-  private mockCategoryUrl = "http://localhost:4200/assets/mockCategories.json";
+  private mockCategoryUrl = "assets/mock-data/mock-categories.json";
 
   constructor(private http: HttpClient) { }
 

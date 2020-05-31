@@ -5,7 +5,7 @@ export class Category {
         private id: number,
         private name: string,
     ) {
-        this.imageUrl = `assets/category-${name.toLowerCase()}.png`;
+        this.imageUrl = `assets/category-images/${name.toLowerCase()}.png`;
     }
 
     getId() { return this.id; }
