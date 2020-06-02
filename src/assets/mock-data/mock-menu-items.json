@@ -1,0 +1,149 @@
+[
+    {
+        "id": 1,
+        "name": "Coca-Cola",
+        "description": "",
+        "categoryId": 1,
+        "image": "assets/menu-items/coca-cola.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Fanta",
+        "description": "",
+        "categoryId": 1,
+        "image": "assets/menu-items/fanta.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Ice-Tea",
+        "description": "",
+        "categoryId": 1,
+        "image": "assets/menu-items/ice-tea.png"
+    },
+    {
+        "id": 4,
+        "name": "Sprite",
+        "description": "",
+        "categoryId": 1,
+        "image": "assets/menu-items/sprite.jpeg"
+    },
+    {
+        "id": 5,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 6,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 7,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 8,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 9,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 10,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 11,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 12,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 13,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 14,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 15,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 16,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 17,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 18,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 19,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 20,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    },
+    {
+        "id": 21,
+        "name": "",
+        "description": "",
+        "categoryId": 0,
+        "image": "assets/menu-items/"
+    }
+]

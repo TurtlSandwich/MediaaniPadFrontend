@@ -1,0 +1,28 @@
+.container {
+  .card {
+    border-radius: 5px;
+    background-color: #eaeaea;
+    margin: 5%;
+
+    img {
+      width: 75%;
+      padding-top: 10%;
+      margin: auto;
+      display: block;
+    }
+
+    p {
+      text-align: center;
+      margin: 0;
+      font-size: 1.4em;
+      padding: 5% 0;
+
+      // This is to ignore angular material stuff.
+      margin: 0;
+    }
+  }
+
+  .card:active{
+    background-color: #888888;
+  }
+}

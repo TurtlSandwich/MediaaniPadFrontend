@@ -1,0 +1,50 @@
+.container {
+  .header {
+    width: 100%;
+    background-color: #cacaca;
+    padding: 1%;
+    position: relative;
+
+    button {
+      height: 100%;
+      border: 0;
+      font-size: 230%;
+      background: #cacaca;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+    }
+
+    button:focus{
+      outline: none;
+    }
+
+    button:active{
+      background: #888888;
+    }
+
+    .return-btn-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      border-right: 5px solid white;
+    }
+
+    img {
+      margin: auto;
+      display: block;
+    }
+
+    .order-btn-container {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      border-left: 5px solid white;
+    }
+  }
+
+  .content-container {
+    margin-top: 8%;
+  }
+}
