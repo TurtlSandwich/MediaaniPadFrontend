@@ -26,16 +26,14 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router) {
 
     this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
-      if (change.amount == 2) {
-        this.sendOrder();
-      } else {
-        change.amount == 1 ?
-          this.order.addMenuItem(change.menuItem) :
-          this.order.removeMenuItem(change.menuItem.id);
+      change.amount == 1 ?
+        this.order.addMenuItem(change.menuItem) :
+        this.order.removeMenuItem(change.menuItem.id);
 
-        console.log(this.order.orderItems);
-      }
+      console.log(this.order.orderItems);
     });
+
+    this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
   }
 
   ngOnInit() {

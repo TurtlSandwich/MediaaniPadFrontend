@@ -8,21 +8,25 @@ import { Subject, Observable } from 'rxjs';
 })
 export class OrderService {
 
-  private subject = new Subject<any>();
+  private orderChangeSubject = new Subject<any>();
+  private sendOrderSubject = new Subject<any>();
 
   constructor() {
   }
 
   changeOrder(menuItem: MenuItem, amount: number) {
-    this.subject.next({ menuItem: menuItem, amount: amount });
+    this.orderChangeSubject.next({ menuItem: menuItem, amount: amount });
   }
 
   onOrderChange(): Observable<any> {
-    return this.subject.asObservable();
+    return this.orderChangeSubject.asObservable();
   }
 
   sendOrder() {
-    // Temp for demo
-    this.changeOrder(null, 2);
+    this.sendOrderSubject.next();
+  }
+
+  onSendOrder(): Observable<any>{
+    return this.sendOrderSubject.asObservable();
   }
 }
