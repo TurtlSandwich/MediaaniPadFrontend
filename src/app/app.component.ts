@@ -5,7 +5,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Order } from './_models/order.model';
 import { WebSocketAPI } from './WebSocketAPI';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,47 +13,25 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'MediaanAngularIPad';
 
-  public order: Order;
+  public showOrder = false;
 
-  private subscription: Subscription;
-  private ws: WebSocketAPI;
-
-  constructor(
-    private orderService: OrderService,
-    private router: Router) {
-
-    this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
-      change.amount == 1 ?
-        this.order.addMenuItem(change.menuItem) :
-        this.order.removeMenuItem(change.menuItem.id);
-
-      console.log(this.order.orderItems);
-    });
-
-    this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.ws = new WebSocketAPI();
-    this.ws._connect();
-
-    this.order = new Order();
-    this.router.navigate(["categories"]);
+    localStorage.clear();
+    this.goToCategories();
   }
 
   goToCategories() {
+    this.showOrder = false;
     this.router.navigate(["categories"]);
   }
 
   goToOrder() {
-    this.router.navigate(["order"]);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.showOrder = true;
   }
 
   // For demo ----------------------------------------------------------------------
@@ -88,10 +66,10 @@ export class AppComponent implements OnInit, OnDestroy {
   //   this.order.removeMenuItem(id);
   // }
 
-  sendOrder() {
-    this.ws._send(this.order.mapOrderForKitchen());
-    this.order.reset();
-  }
+  // sendOrder() {
+  //   this.ws._send(this.order.mapOrderForKitchen());
+  //   this.order.reset();
+  // }
 
   // -------------------------------------------------------------------------------
 

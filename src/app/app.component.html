@@ -50,7 +50,7 @@
 <div class="container">
   <div class="header">
     <div class="return-btn-container">
-      <button (click)="goToCategories()">Back</button>
+      <button (click)="goToCategories()">Categories</button>
     </div>
     <img src="assets/mediaan.png" alt="MEDIAAN">
     <div class="order-btn-container">
@@ -58,6 +58,11 @@
     </div>
   </div>
   <div class="content-container">
-    <router-outlet></router-outlet>
+    <div class="router-container" [hidden]="showOrder">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="order-container" [hidden]="!showOrder">
+      <app-order></app-order>
+    </div>
   </div>
 </div>
