@@ -18,31 +18,40 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public order: Order;
 
-  private ws: WebSocketAPI;
   private subscription: Subscription;
+  private ws: WebSocketAPI;
 
   constructor(
     private orderService: OrderService,
     private router: Router) {
 
     this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
-      change.amount == 1 ?
-      this.order.addMenuItem(change.menuItem):
-      this.order.removeMenuItem(change.menuItem.id);
+      if (change.amount == 2) {
+        this.sendOrder();
+      } else {
+        change.amount == 1 ?
+          this.order.addMenuItem(change.menuItem) :
+          this.order.removeMenuItem(change.menuItem.id);
 
-      console.log(this.order.orderItems);
+        console.log(this.order.orderItems);
+      }
     });
   }
 
   ngOnInit() {
     this.ws = new WebSocketAPI();
-    // this.ws._connect();
+    this.ws._connect();
+
     this.order = new Order();
     this.router.navigate(["categories"]);
   }
 
-  goToCategories(){ 
+  goToCategories() {
     this.router.navigate(["categories"]);
+  }
+
+  goToOrder() {
+    this.router.navigate(["order"]);
   }
 
   ngOnDestroy() {
@@ -81,10 +90,10 @@ export class AppComponent implements OnInit, OnDestroy {
   //   this.order.removeMenuItem(id);
   // }
 
-  // sendOrder() {
-  //   // this.ws._send(this.order.mapOrderForKitchen());
-  //   this.order.reset();
-  // }
+  sendOrder() {
+    this.ws._send(this.order.mapOrderForKitchen());
+    this.order.reset();
+  }
 
   // -------------------------------------------------------------------------------
 
