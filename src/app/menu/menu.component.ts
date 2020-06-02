@@ -21,7 +21,8 @@ export class MenuComponent implements OnInit {
   loadMenu(){    
     this.menuItemsService.getMenuItemsByCategoryId(this.categoryservice.selectedCategoryId).subscribe((response: MenuItem[]) => {
       // The filtering part should happen on back-end.
-      this.menuItems = response.filter(mi => mi.categoryId == this.categoryservice.selectedCategoryId);
+      this.menuItems = response;
+      console.log(response);
     })
   }
 

@@ -7,15 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class MenuItemService {
 
-  private mockMenuUrl = "assets/mock-data/mock-menu-items.json";
+  private mockMenuUrl = "http://localhost:8081/getmealsbycategory/";
 
   constructor(private http: HttpClient) { }
 
   getMenuItemsByCategoryId(categoryId: number): Observable<any>{
-    return this.http.get(this.mockMenuUrl);
-  }
-
-  getAllMenuItems(){
-    return this.http.get(this.mockMenuUrl);
+    return this.http.get(this.mockMenuUrl + categoryId);
   }
 }

@@ -9,7 +9,7 @@ export class CategoryService {
   
   public selectedCategoryId: number;
 
-  private mockCategoryUrl = "assets/mock-data/mock-categories.json";
+  private mockCategoryUrl = "http://localhost:8081/category/getcategories";
 
   constructor(private http: HttpClient) { }
 
