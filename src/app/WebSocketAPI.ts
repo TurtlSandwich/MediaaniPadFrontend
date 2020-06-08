@@ -3,7 +3,7 @@ import * as SockJS from 'sockjs-client';
 import { AppComponent } from './app.component';
 
 export class WebSocketAPI {
-    webSocketEndPoint: string = 'http://localhost:8080/mediaan-ws';
+    webSocketEndPoint: string = 'http://localhost:8085/mediaan-ws';
     topic: string = "/kitchen";
     stompClient: any;
 
