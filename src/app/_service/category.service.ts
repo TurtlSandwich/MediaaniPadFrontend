@@ -9,11 +9,11 @@ export class CategoryService {
   
   public selectedCategoryId: number;
 
-  private mockCategoryUrl = "assets/mock-data/mock-categories.json";
+  private getCategoryUrl = "http://localhost:8081/category/getcategories";
 
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<any>{
-    return this.http.get(this.mockCategoryUrl);
+    return this.http.get(this.getCategoryUrl);
   }
 }
