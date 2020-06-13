@@ -5,6 +5,7 @@ import { Order } from './../_models/order.model';
 import { Subscription, Subject } from 'rxjs';
 import { OrderService } from './../_service/order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-order',
@@ -23,7 +24,11 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.ws = new WebSocketAPI();
-    this.ws._connect();
+    const _this = this;
+    setTimeout(() => {
+      _this.ws._connect();
+    }, 2000);
+    // this.ws._connect();
 
     this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
       change.amount == 1 ?

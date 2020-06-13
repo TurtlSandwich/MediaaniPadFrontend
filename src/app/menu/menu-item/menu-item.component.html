@@ -1,6 +1,6 @@
 <div class="container">
     <div class="card" (click)="toggleOrderMenu()" [hidden]="clicked">
-        <img src="{{menuItem.image}}" alt="">
+        <!-- <img src="{{menuItem.image}}" alt=""> -->
         <p class="name">{{menuItem.name}}</p>
     </div>
     <div class="card clicked" [hidden]="!clicked">
@@ -14,10 +14,4 @@
             <p class="bottom" (click)="plus()">+</p>
         </div>
     </div>
-
-    <!-- <div class="card" [hidden]="!clicked" (click)="toggleOrderMenu()">
-        <p class="clicked plus" (click)="plus()">+</p>
-        <p class="clicked current-amount">{{amount}}</p>
-        <p class="clicked min" (click)="min()">-</p>
-    </div> -->
 </div>

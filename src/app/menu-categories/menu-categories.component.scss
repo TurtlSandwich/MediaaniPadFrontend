@@ -6,6 +6,6 @@
     grid-template-columns: repeat(auto-fill, minmax(40%, auto));
 
     // minmax(x, y). x = gap between rows. x min = 33%.
-    grid-auto-rows: minmax(40%, auto);
+    grid-auto-rows: minmax(25%, auto);
   }
 }

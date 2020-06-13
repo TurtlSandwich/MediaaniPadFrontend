@@ -28,8 +28,9 @@ export class WebSocketAPI {
     // on error, schedule a reconnection attempt
     errorCallBack(error) {
         console.log("errorCallBack -> " + error)
+        const _this = this;
         setTimeout(() => {
-            this._connect();
+            _this._connect();
         }, 5000);
     }
 
