@@ -28,14 +28,11 @@ export class OrderComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       _this.ws._connect();
     }, 2000);
-    // this.ws._connect();
 
     this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
       change.amount == 1 ?
         this.order.addMenuItem(change.menuItem) :
         this.order.removeMenuItem(change.menuItem.id);
-
-      console.log(this.order.orderItems);
     });
 
     this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());

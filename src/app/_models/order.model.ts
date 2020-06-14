@@ -6,6 +6,7 @@ export class Order {
     tableNumber: number;
     orderItems: OrderItem[];
     orderItemId: number;
+    orderId: number = 1;
 
     constructor() {
         this.reset();
@@ -36,7 +37,8 @@ export class Order {
         return {
             tableNumber: this.tableNumber,
             orderTime: new Date().toLocaleTimeString("nl"),
-            orderedItems: this.orderItems.map(oi => {return {id: oi.menuItem.id, amount: oi.amount}})
+            orderedItems: this.orderItems.map(oi => {return {name: oi.menuItem.name, amount: oi.amount}}),
+            orderId: this.orderId++
         }
     }
 }
