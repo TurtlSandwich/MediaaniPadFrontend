@@ -20,6 +20,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.order = new Order();
     this.ws = new WebSocketAPI();
     this.ws._connect();
 
@@ -29,9 +30,7 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.order.removeMenuItem(change.menuItem.id);
     });
 
-    this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
-
-    this.order = new Order();
+    // this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
   }
 
   ngOnDestroy(): void {

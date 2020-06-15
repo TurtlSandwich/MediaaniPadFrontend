@@ -20,6 +20,7 @@ export class MenuItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.amount = Number(localStorage.getItem(`${this.menuItem.id}`));
+    this.subscription = this.orderService.onSendOrder().subscribe(() => this.amount = 0);
   }
 
   toggleOrderMenu() {

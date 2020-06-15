@@ -28,7 +28,7 @@ export class OrderService {
       "order_time": Date.now().toLocaleString("nl").substring(0, 5),
       "meals": [order.orderItems.map(oi => {return { id: oi.menuItem.id }})]
     }
-    this.http.post("http://localhost:8081/ipad/addorder", body).subscribe();
+    this.http.post("http://localhost:8081/ipad/addorder", body).subscribe(data => console.log(data));
     this.sendOrderSubject.next();
   }
 
