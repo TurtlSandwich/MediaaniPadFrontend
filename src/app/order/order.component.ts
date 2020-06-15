@@ -29,8 +29,6 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.order.removeMenuItem(change.menuItem.id);
     });
 
-    this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
-
     this.order = new Order();
   }
 
