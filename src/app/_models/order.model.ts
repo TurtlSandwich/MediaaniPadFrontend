@@ -41,7 +41,7 @@ export class Order {
     mapOrderForKitchen(){
         return {
             tableNumber: this.tableNumber,
-            orderTime: new Date().toLocaleTimeString("nl"),
+            orderTime: new Date().toLocaleTimeString("nl").substring(0, 5),
             orderedItems: this.orderItems.map(oi => {return {name: oi.menuItem.name, amount: oi.amount}}),
             orderId: this.orderId++
         }
