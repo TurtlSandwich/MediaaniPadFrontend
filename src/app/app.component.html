@@ -1,11 +1,16 @@
 <div class="container">
   <div class="header">
-    <div class="return-btn-container">
-      <button (click)="goToCategories()">Menu</button>
-    </div>
     <img src="assets/mediaan.png" alt="MEDIAAN">
-    <div class="order-btn-container">
-      <button (click)="goToOrder()">Order</button>
+    <div class="buttons">
+      <div class="btn-container">
+        <button (click)="goToCategories()">Menu</button>
+      </div>
+      <div class="btn-container">
+        <button (click)="goToOrder()">Order</button>
+      </div>
+      <div class="btn-container">
+        <button (click)="endSession()">End session</button>
+      </div>
     </div>
   </div>
   <div class="content-container">

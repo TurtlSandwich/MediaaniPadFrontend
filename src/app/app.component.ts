@@ -27,4 +27,8 @@ export class AppComponent implements OnInit {
     this.showOrder = true;
   }
 
+  endSession(){
+    localStorage.setItem("session", null);
+    this.goToCategories();
+  }
 }

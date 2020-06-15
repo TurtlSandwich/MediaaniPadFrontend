@@ -23,7 +23,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.order = new Order();
     this.ws = new WebSocketAPI();
-    this.ws._connect();
+    // this.ws._connect();
 
     this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
       change.amount == 1 ?

@@ -4,43 +4,34 @@
     background-color: #cacaca;
     padding: 1%;
     position: relative;
+    display: flex;
 
-    button {
-      height: 100%;
-      border: 0;
-      font-size: 230%;
-      background: #cacaca;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-    }
-
-    button:focus{
-      outline: none;
-    }
-
-    button:active{
-      background: #888888;
-    }
-
-    .return-btn-container {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      border-right: 5px solid white;
-    }
-
-    img {
-      margin: auto;
-      display: block;
-    }
-
-    .order-btn-container {
+    .buttons {
+      display: flex;
       position: absolute;
       right: 0;
       top: 0;
       height: 100%;
-      border-left: 5px solid white;
+
+      .btn-container {
+        button {
+          height: 100%;
+          border: 0;
+          font-size: 230%;
+          background: #cacaca;
+          border-left: 20px solid transparent;
+          border-right: 20px solid transparent;
+        }
+        border-left: 5px solid white;
+
+        button:focus {
+          outline: none;
+        }
+
+        button:active {
+          background: #888888;
+        }
+      }
     }
   }
 
