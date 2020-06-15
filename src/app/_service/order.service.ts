@@ -1,9 +1,8 @@
 import { Order } from './../_models/order.model';
 import { HttpClient } from '@angular/common/http';
-import { WebSocketAPI } from './../WebSocketAPI';
 import { MenuItem } from '../_models/menu-item.model';
 import { Injectable } from '@angular/core';
-import { Subject, Observable, Subscription } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,6 @@ export class OrderService {
 
   private orderChangeSubject = new Subject<{ menuItem: MenuItem, amount: number }>();
   private sendOrderSubject = new Subject<any>();
-  private getAmountsubject = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -36,9 +34,5 @@ export class OrderService {
 
   onSendOrder(): Observable<any> {
     return this.sendOrderSubject.asObservable();
-  }
-
-  getAmount(id: number): number {
-    return 0;
   }
 }

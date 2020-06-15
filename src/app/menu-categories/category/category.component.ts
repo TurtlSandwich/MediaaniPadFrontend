@@ -1,12 +1,12 @@
 import { Category } from '../../_models/category.model';
-import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit, OnChanges {
+export class CategoryComponent {
 
   @Input() public category: Category;
 
@@ -14,13 +14,7 @@ export class CategoryComponent implements OnInit, OnChanges {
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-  }
-
-  ngOnInit(): void {
-  }
-
-  selectCategory(id: number){
+  selectCategory(id: number) {
     this.select.emit(id);
   }
 }

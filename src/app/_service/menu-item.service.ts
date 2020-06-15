@@ -14,8 +14,4 @@ export class MenuItemService {
   getMenuItemsByCategoryId(categoryId: number): Observable<any>{
     return this.http.get(this.menuUrl + categoryId);
   }
-
-  // getAllMenuItems(){
-  //   return this.http.get(this.mockMenuUrl);
-  // }
 }

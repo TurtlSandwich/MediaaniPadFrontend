@@ -1,7 +1,4 @@
-import { MenuItem } from '../_models/menu-item.model';
-import { MenuItemService } from '../_service/menu-item.service';
 import { Category } from '../_models/category.model';
-// import { MenuService } from './../service/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../_service/category.service';
 import { Router } from '@angular/router';

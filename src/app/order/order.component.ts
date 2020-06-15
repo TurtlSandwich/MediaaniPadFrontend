@@ -14,7 +14,6 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   public order: Order;
 
-  private subject = new Subject<any>();
   private subscription: Subscription;
   private ws: WebSocketAPI;
 
@@ -40,8 +39,11 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   sendOrder() {
-    this.ws._send(this.order.mapOrderForKitchen());
-    this.order.reset();
+    if (this.order.orderItems.length > 0) {
+      this.ws._send(this.order.mapOrderForKitchen());
+      this.orderService.sendOrder(this.order);
+      this.order.reset();
+    }
   }
 
 }

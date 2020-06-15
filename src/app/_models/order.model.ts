@@ -1,5 +1,4 @@
 import { MenuItem } from './menu-item.model';
-// import { Dish } from './dish.model';
 
 export class Order {
 
@@ -10,6 +9,10 @@ export class Order {
 
     constructor() {
         this.reset();
+        if(localStorage.getItem("tableNumber") == null){
+            this.tableNumber = Math.round(Math.random() * 9) + 1;       // Just a random table number.
+            localStorage.setItem("tableNumber", this.tableNumber.toString());
+        }
     }
 
     addMenuItem(menuItem: MenuItem) {
@@ -28,9 +31,11 @@ export class Order {
     }
 
     reset() {
+        for (const oi of this.orderItems) {
+            localStorage.setItem(`${oi.menuItem.id}`, "0");
+        }
         this.orderItems = [];
         this.orderItemId = 1;
-        this.tableNumber = Math.round(Math.random() * 9) + 1;       // Just a random table number.
     }
 
     mapOrderForKitchen(){
@@ -53,7 +58,4 @@ class OrderItem {
         this.menuItem = menuItem;
         this.amount = 1;
     }
-
-    // For demo
-    toString() { return `${this.id}) ${this.menuItem.name} | ${this.amount}x` }
 }

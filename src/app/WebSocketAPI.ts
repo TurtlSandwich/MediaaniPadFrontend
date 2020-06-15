@@ -12,7 +12,7 @@ export class WebSocketAPI {
         let ws = new SockJS(this.webSocketEndPoint);
         this.stompClient = Stomp.over(ws);
         const _this = this;
-        _this.stompClient.connect({}, function (frame) {
+        this.stompClient.connect({}, function (frame) {
             _this.stompClient.subscribe(_this.topic, function (sdkEvent) {
             });
         }, this.errorCallBack);
@@ -35,7 +35,7 @@ export class WebSocketAPI {
     }
 
     _send(message) {
-        console.log("calling logout api via web socket");
+        console.log("Sending order to kitchen");
         this.stompClient.send("/kitchen", {}, JSON.stringify(message));
     }
 }
