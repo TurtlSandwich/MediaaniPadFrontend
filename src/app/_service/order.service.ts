@@ -24,7 +24,7 @@ export class OrderService {
 
   sendOrder(order: Order) {
     let body = {
-      "sessions": 2,
+      "sessions": localStorage.getItem("session"),
       "order_time": new Date().toLocaleTimeString("nl"),
       "meals": order.orderItems.map(oi => {return { id: oi.menuItem.id }})
     }

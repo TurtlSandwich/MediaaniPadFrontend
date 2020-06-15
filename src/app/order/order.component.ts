@@ -23,7 +23,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.order = new Order();
     this.ws = new WebSocketAPI();
-    // this.ws._connect();
+    this.ws._connect();
 
     this.subscription = this.orderService.onOrderChange().subscribe((change: { menuItem: MenuItem, amount: number }) => {
       change.amount == 1 ?
@@ -31,9 +31,6 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.order.removeMenuItem(change.menuItem.id);
     });
 
-    if(localStorage.getItem("session") === null) {
-      localStorage.setItem("session", String(++this.sessionId))
-    }
   }
 
   ngOnDestroy(): void {
@@ -43,6 +40,9 @@ export class OrderComponent implements OnInit, OnDestroy {
   sendOrder() {
     if (this.order.orderItems.length > 0) {
       this.ws._send(this.order.mapOrderForKitchen());
+      if(localStorage.getItem("session") == "null" || localStorage.getItem("session") == null) {
+        localStorage.setItem("session", String(++this.sessionId))
+      }
       this.orderService.sendOrder(this.order);
       this.order.reset();
     }
