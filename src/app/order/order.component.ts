@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
   private ws: WebSocketAPI;
+  private sessionId: number = 0;
 
   constructor(private orderService: OrderService) { }
 
@@ -30,7 +31,9 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.order.removeMenuItem(change.menuItem.id);
     });
 
-    // this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
+    if(localStorage.getItem("session") === null) {
+      localStorage.setItem("session", String(++this.sessionId))
+    }
   }
 
   ngOnDestroy(): void {
