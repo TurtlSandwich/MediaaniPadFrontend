@@ -30,7 +30,7 @@ export class OrderService {
       "order_time": Date.now().toLocaleString("nl").substring(0, 5),
       "meals": [order.orderItems.map(oi => {return { id: oi.menuItem.id }})]
     }
-    // this.http.post("http://localhost:8081/ipad/addorder", body);
+    this.http.post("http://localhost:8081/ipad/addorder", body).subscribe();
     this.sendOrderSubject.next();
   }
 

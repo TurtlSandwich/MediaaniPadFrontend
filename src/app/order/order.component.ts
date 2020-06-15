@@ -1,11 +1,9 @@
-import { Router } from '@angular/router';
 import { WebSocketAPI } from './../WebSocketAPI';
 import { MenuItem } from './../_models/menu-item.model';
 import { Order } from './../_models/order.model';
 import { Subscription, Subject } from 'rxjs';
 import { OrderService } from './../_service/order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-order',
@@ -30,8 +28,6 @@ export class OrderComponent implements OnInit, OnDestroy {
       change.amount == 1 ?
         this.order.addMenuItem(change.menuItem) :
         this.order.removeMenuItem(change.menuItem.id);
-
-      console.log(this.order.orderItems);
     });
 
     this.subscription = this.orderService.onSendOrder().subscribe(() => this.sendOrder());
