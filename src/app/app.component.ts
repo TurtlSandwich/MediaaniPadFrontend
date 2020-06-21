@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    localStorage.clear();
     this.goToCategories();
   }
 
@@ -28,4 +27,8 @@ export class AppComponent implements OnInit {
     this.showOrder = true;
   }
 
+  endSession(){
+    localStorage.setItem("session", null);
+    this.goToCategories();
+  }
 }
