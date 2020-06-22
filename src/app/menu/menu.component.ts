@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
   loadMenu(){    
     this.menuItemsService.getMenuItemsByCategoryId(this.categoryservice.selectedCategoryId).subscribe((response: MenuItem[]) => {
       this.menuItems = response;
+      console.log(response);
     })
   }
 

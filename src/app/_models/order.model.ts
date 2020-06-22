@@ -31,9 +31,6 @@ export class Order {
     }
 
     reset() {
-        // for (const oi of this.orderItems) {
-        //     localStorage.setItem(`${oi.menuItem.id}`, "0");
-        // }
         this.orderItems = [];
         this.orderItemId = 1;
     }
