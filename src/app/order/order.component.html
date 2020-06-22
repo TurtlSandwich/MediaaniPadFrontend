@@ -2,12 +2,12 @@
     <ul style="width: 70%; margin: 10% auto;">
         <li style="font-size: 2em; background-color: #cacaca; margin: 10%; padding: 5%; border-radius: 10px;"
             *ngFor="let oi of order.orderItems">{{oi.menuItem.name}}
-            <span style="float: right;">{{oi.amount}}</span>
+            <span style="float: right;">{{oi.amount}}x | € {{oi.amount * oi.menuItem.price}}</span>
         </li>
 
         <hr>
 
-        <li style="font-size: 2em; background-color: #cacaca; margin: 10%; padding: 5%; border-radius: 10px; text-align: right">{{totalPrice}}</li>
+        <li style="font-size: 2em; background-color: #cacaca; margin: 10%; padding: 5%; border-radius: 10px; text-align: right"> <span style="float: left;">Total</span>€ {{totalPrice}}</li>
     </ul>
 
     <button style="font-size: 3em; margin: auto; display: block;" (click)="sendOrder()">Send order</button>
