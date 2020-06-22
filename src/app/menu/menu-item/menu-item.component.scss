@@ -20,10 +20,20 @@ p {
       padding-top: 10%;
     }
 
-    .name {
-      text-align: center;
+    .title {
+      // text-align: center;
       font-size: 1.4em;
       padding: 5% 0;
+    }
+
+    .name {
+      text-align: left;
+      padding-left: 12%;
+    }
+
+    .price {
+      float: right;
+      padding-right: 14%;
     }
 
     .order-menu {
@@ -78,7 +88,7 @@ p {
         width: 100%;
       }
 
-      p:active{
+      p:active {
         background-color: #888888;
       }
 
@@ -98,7 +108,7 @@ p {
         transform: translate(-50%, 50%);
       }
 
-      .middle:active{
+      .middle:active {
         background-color: #eaeaea;
       }
 

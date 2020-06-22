@@ -1,12 +1,16 @@
 <div class="container">
     <div class="card" (click)="toggleOrderMenu()" [hidden]="clicked">
         <img src="{{menuItem.image}}" alt="">
-        <p class="name">{{menuItem.name}}</p>
+        <div class="title">
+            <p><span class="name"> {{menuItem.name}}</span><span class="price">€ {{menuItem.price}}</span></p>
+        </div>
     </div>
     <div class="card clicked" [hidden]="!clicked">
         <div class="left">
             <div class="item"><img src="{{menuItem.image}}" alt=""></div>
-            <div class="return-btn" (click)="toggleOrderMenu()"><p>Back</p></div>
+            <div class="return-btn" (click)="toggleOrderMenu()">
+                <p>Back</p>
+            </div>
         </div>
         <div class="right">
             <p class="top" (click)="min()">-</p>

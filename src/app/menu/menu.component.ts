@@ -18,10 +18,11 @@ export class MenuComponent implements OnInit {
     this.loadMenu();
   }
 
-  loadMenu(){    
+  loadMenu() {
     this.menuItemsService.getMenuItemsByCategoryId(this.categoryservice.selectedCategoryId).subscribe((response: MenuItem[]) => {
       this.menuItems = response;
       console.log(response);
+      console.log(this.menuItems);
     })
   }
 

@@ -19,6 +19,7 @@ export class MenuItemComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    console.log(this.menuItem);
     this.amount = Number(localStorage.getItem(`${this.menuItem.id}`));
     this.subscription = this.orderService.onSendOrder().subscribe(() => this.amount = 0);
   }
